@@ -1,0 +1,13 @@
+.cproject
+Debug/**
+Release/**
+.settings/**
+.DS_Store
+**/core
+**/gmon.out
+**/*.o
+*.zip
+examples/example1
+examples/example2
+examples/example3
+examples/example4
