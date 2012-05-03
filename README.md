@@ -16,7 +16,7 @@ human readbility or compact for size.
 Arrays: access using [] operator or at() method with numeric index.
       size() will return the number of entries.
       Items can be removed using erase() or clear() for all.
-```
+``` c++
   JsonHandle root;
  root[0] = "Thomas";
  root.erase(0); 
@@ -27,7 +27,7 @@ Objects: access using [] operator or at() method with char * ot std::string
       returned.  The keys can be enumerated using the keys method.
       size() will return the number of entries.
       Items can be removed using erase() or clear() for all.
-```
+``` cpp
    JsonHandle root;
    root["name"] = "Thomas";
    root.erase("name");
