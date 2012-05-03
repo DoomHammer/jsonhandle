@@ -16,10 +16,11 @@ human readbility or compact for size.
 Arrays: access using [] operator or at() method with numeric index.
       size() will return the number of entries.
       Items can be removed using erase() or clear() for all.
+
 ``` c++
-  JsonHandle root;
- root[0] = "Thomas";
- root.erase(0); 
+   JsonHandle root;
+   root[0] = "Thomas";
+   root.erase(0); 
 ```
 
 Objects: access using [] operator or at() method with char * ot std::string
@@ -27,7 +28,8 @@ Objects: access using [] operator or at() method with char * ot std::string
       returned.  The keys can be enumerated using the keys method.
       size() will return the number of entries.
       Items can be removed using erase() or clear() for all.
-``` cpp
+
+``` c++
    JsonHandle root;
    root["name"] = "Thomas";
    root.erase("name");
@@ -35,7 +37,8 @@ Objects: access using [] operator or at() method with char * ot std::string
 
 Strings: set using setString() or fetch using stringValue() methods
       Alternatively use the = operator.
-```
+
+``` c++
    JsonHandle root;
    root["first"] = "Thomas";
    root["last"].setString("Davis");
@@ -46,7 +49,8 @@ Strings: set using setString() or fetch using stringValue() methods
 Numbers: set using setLong() or setDouble() and fetch using longValue()
       and doubleValue() methods.
       Alternatively use the = operator.
-```
+
+``` c++
    JsonHandle root;
    root["age"].setLong(14);
    root["rate"].setDouble(0.1234);
@@ -56,7 +60,8 @@ Numbers: set using setLong() or setDouble() and fetch using longValue()
 
 Boolean: set using setBoolean() and fetch using booleanValue()
       Alternatively use the = operator.
-```
+
+``` c++
    JsonHandle root;
    root["old"].setBoolean(false);
 
@@ -64,7 +69,8 @@ Boolean: set using setBoolean() and fetch using booleanValue()
 ```
 
 Null: set using setNull() and fetch using isNull()
-```
+
+``` c++
    JsonHandle root;
    root["enemy"].setNull();
 
@@ -73,7 +79,8 @@ Null: set using setNull() and fetch using isNull()
 
 References: are created using the copy contructor.   The assignment (=)
        operator makes a depp copy instead is that is desired.
-```
+
+``` c++
     JsonHandle A;
     JsonHandle B(A["list"]), C;
     B[0] = (int64_t)0;
