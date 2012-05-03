@@ -15,7 +15,7 @@ cd ..
 rm -rf $dist $file
 mkdir $dist
 
-cp -r CHANGELOG  examples  LICENSE  README  src $dist
+cp -r CHANGELOG  examples  LICENSE  README.md  src $dist
 
 zip -r $file $dist
 
