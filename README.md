@@ -108,4 +108,7 @@ needs to be in the include path.
 Copy src/JsonHandle.cpp src/JsonHandle.h src/_JS0.cpp src/_JS0.h to the build and compile
 them along with the other source code.
 
-As an alternative, build them into a library and use that.
+As an alternative, build them into a library and use that:
+
+    python waf configure
+    python waf

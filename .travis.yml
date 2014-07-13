@@ -1,0 +1,18 @@
+language: cpp
+compiler:
+  - gcc
+  - clang
+script: ./waf configure --prefix=jsonhandle; ./waf; ./waf install; tar czf jsonhandle-Linux-x64.tar.gz
+  jsonhandle
+os:
+  - linux
+  - osx
+deploy:
+  provider: releases
+  api_key:
+    secure: e3QvwVcTXnUyqvoJpaiGQ5HHxE6Yj5V8MVslyIoJaMU8cragcX/TQ2wjJYXJhQ9sW73qIGtX3lwKyovw4zRYR2+n201s9McGqjVd7LzirRQWYEkp/Aacjk83uYiY+aNjSIMNyTZOf4gdbpRM/zPUzCovf0FinX8v6niiceNUuZA=
+  skip_cleanup: true
+  file: jsonhandle-Linux-x64.tar.gz
+  on:
+    tags: true
+    all_branches: true
