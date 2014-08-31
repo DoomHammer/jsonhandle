@@ -1,8 +1,11 @@
+Version 0.5.2 7/13/2014
+
+ Added wafscript for building.
 
 Version 0.5.1 4/22/2011
 
  Minor platform build fixes like includes.
- Made toFile and toStrign functions constant
+ Made toFile and toString functions constant.
 
 Version 0.5 4/8/2011
 
