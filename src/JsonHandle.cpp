@@ -82,7 +82,7 @@ JsonHandle::JsonHandle() :
 }
 
 JsonHandle::JsonHandle(_JS0 *node) :
-		parent(parent) {
+		parent(0) {
 #ifdef HAS_JSON_STATS
 	stats.allocs++;
 #endif

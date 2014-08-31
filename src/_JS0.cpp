@@ -416,7 +416,7 @@ void _JS0::toJsonString(std::string &buffer, bool whiteSpace,
 void _JS0::appendStringValue(std::string &buffer, int precision) const {
 	if (type == _JS0::NUMBER_LONG) {
 		char buf[32];
-		int len = snprintf(buf, sizeof(buf), "%lld", value.lng);
+		int len = snprintf(buf, sizeof(buf), "%lld", (long long)value.lng);
 		buffer.append(buf, len);
 	} else if (type == _JS0::NUMBER_DOUBLE) {
 		char buf[64];

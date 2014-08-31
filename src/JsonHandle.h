@@ -209,12 +209,6 @@ public:
 	operator unsigned() const {
 		return (unsigned) longValue();
 	}
-	operator long() const {
-		return (long) longValue();
-	}
-	operator unsigned long() const {
-		return (unsigned long) longValue();
-	}
 	operator long double() const {
 		return doubleValue();
 	}
