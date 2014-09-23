@@ -2,7 +2,7 @@ language: cpp
 compiler:
   - gcc
   - clang
-script: ./waf configure --prefix=jsonhandle; ./waf; ./waf install; tar czvf jsonhandle-Linux-x64.tar.gz
+script: ./waf configure --prefix=jsonhandle; ./waf; ./waf install; tar czf jsonhandle-Linux-x64.tar.gz
   jsonhandle
 os:
   - linux
