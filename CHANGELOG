@@ -1,3 +1,7 @@
+Version 0.5.3 9/23/2014
+
+ Added a function to check whether key exists.
+
 Version 0.5.2 7/13/2014
 
  Added wafscript for building.

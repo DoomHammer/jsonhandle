@@ -601,6 +601,16 @@ JsonHandle::key(int index) const {
 			vapor.node->getKeyAtIndex(index) : *(std::string*) 0;
 }
 
+bool
+JsonHandle::exists(std::string const &key) const {
+	if (&key == NULL)
+	{
+		return false;
+	}
+	_JS0 *n = vapor.node->getByKey(key);
+  return n != NULL;
+}
+
 std::string &
 JsonHandle::toCompactString(std::string &buffer, int precision) const {
 	if (state == STATE_HAS_NODE

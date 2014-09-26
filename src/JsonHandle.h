@@ -148,6 +148,11 @@ public:
 	 */
 	const std::string &key(int index) const;
 
+  /**
+   * exists - checks whether a specific key is present.
+   */
+  bool exists(std::string const &key) const;
+
 	/**
 	 * size()
 	 *    if handle is an Array - size of array.
