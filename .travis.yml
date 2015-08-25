@@ -2,6 +2,7 @@ language: cpp
 compiler:
   - gcc
   - clang
+sudo: false
 script: ./waf configure --prefix=jsonhandle; ./waf; ./waf install; tar czf jsonhandle-Linux-x64.tar.gz
   jsonhandle
 os:
