@@ -162,7 +162,7 @@ JsonHandle::copy(const JsonHandle &from) {
 
 JsonHandle &
 JsonHandle::operator=(const JsonHandle &from) {
-	if (&from && &from != this && from.state == STATE_HAS_NODE) {
+	if (&from != this && from.state == STATE_HAS_NODE) {
 
 		if (state != STATE_HAS_NODE) {
 			if (state != STATE_HAS_NODE) {
@@ -214,11 +214,6 @@ JsonHandle JsonHandle::operator[](const char *key) {
 }
 
 JsonHandle JsonHandle::operator[](const std::string &key) {
-	if (&key == NULL)
-	{
-		PRINTERR("operator[](string &)", "null key");
-		return JsonHandle::JSON_ERROR;
-	}
 	if (state != STATE_HAS_NODE) {
 		makeVaporNode("operator[](string &)");
 		if (state != STATE_HAS_NODE
@@ -267,11 +262,6 @@ JsonHandle JsonHandle::at(const char *key) {
 }
 
 JsonHandle JsonHandle::at(const std::string &key) {
-	if (&key == NULL)
-	{
-		PRINTERR("at(string &)", "null key");
-		return JsonHandle::JSON_ERROR;
-	}
 	if (state != STATE_HAS_NODE) {
 		makeVaporNode("operator[](string &)");
 		if (state != STATE_HAS_NODE
@@ -350,11 +340,7 @@ JsonHandle::setString(const std::string &x) {
 		)
 			return *this;
 	}
-	if (&x == NULL
-	)
-		vapor.node->setNull();
-	else
-		vapor.node->setString(x);
+	vapor.node->setString(x);
 	return *this;
 }
 
@@ -494,7 +480,7 @@ int64_t JsonHandle::longValue(int64_t defaultValue) const {
 		if (vapor.node->getType() == _JS0::STRING) {
 			const std::string &s = vapor.node->stringValue();
 			int64_t value;
-			if (&s && parseLong(s, value)) {
+			if (parseLong(s, value)) {
 				vapor.node->setLong(value);
 				return value;
 			}
@@ -513,7 +499,7 @@ bool JsonHandle::booleanValue(bool defaultValue) const {
 		if (vapor.node->getType() == _JS0::STRING) {
 			const std::string &s = vapor.node->stringValue();
 			bool value;
-			if (&s && parseBoolean(s, value)) {
+			if (parseBoolean(s, value)) {
 				vapor.node->setBoolean(value);
 				return value;
 			}
@@ -532,7 +518,7 @@ long double JsonHandle::doubleValue(long double defaultValue) const {
 		if (vapor.node->getType() == _JS0::STRING) {
 			const std::string &s = vapor.node->stringValue();
 			long double value;
-			if (&s && parseDouble(s, value)) {
+			if (parseDouble(s, value)) {
 				vapor.node->setDouble(value);
 				return value;
 			}
@@ -567,13 +553,13 @@ JsonHandle::stringValuePtr(const char *defaultValue) const {
 	if (state == STATE_HAS_NODE) {
 		if (vapor.node->getType() == _JS0::STRING) {
 			const std::string &s = vapor.node->stringValue();
-			return (&s == 0) ? NULL : s.c_str();
+			return s.c_str();
 		}
 		if (vapor.node->getType() == _JS0::BOOLEAN) {
 			vapor.node->setString(
 					vapor.node->booleanValue() ? "true" : "false");
 			const std::string &s = vapor.node->stringValue();
-			return (&s == 0) ? NULL : s.c_str();
+			return s.c_str();
 		}
 		if (vapor.node->getType() == _JS0::NUMBER_LONG
 				|| vapor.node->getType() == _JS0::NUMBER_DOUBLE) {
@@ -581,7 +567,7 @@ JsonHandle::stringValuePtr(const char *defaultValue) const {
 			vapor.node->appendStringValue(st, defaultPrecision);
 			vapor.node->setString(st);
 			const std::string &s = vapor.node->stringValue();
-			return (&s == 0) ? NULL : s.c_str();
+			return s.c_str();
 		}
 	}
 	return defaultValue;
@@ -603,10 +589,6 @@ JsonHandle::key(int index) const {
 
 bool
 JsonHandle::exists(std::string const &key) const {
-	if (&key == NULL)
-	{
-		return false;
-	}
 	_JS0 *n = vapor.node->getByKey(key);
   return n != NULL;
 }
@@ -680,7 +662,7 @@ JsonHandle::fromString(const std::string &from) {
 		)
 			return JsonHandle::JSON_ERROR;
 	}
-	if (&from == 0 || !vapor.node->setFromJsonStlString(from)) {
+	if (!vapor.node->setFromJsonStlString(from)) {
 		return JsonHandle::JSON_ERROR;
 	}
 	return *this;

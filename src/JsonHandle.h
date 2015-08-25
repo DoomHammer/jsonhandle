@@ -451,8 +451,7 @@ public:
 	 */
 	bool operator ==(const JsonHandle &other) const {
 		return (this == &other) ? true :
-				(&other == 0 || this == 0) ?
-						false : vapor.node == other.vapor.node;
+				vapor.node == other.vapor.node;
 	}
 
 
